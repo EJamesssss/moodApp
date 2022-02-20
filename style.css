@@ -2,20 +2,72 @@ body{
     margin: 0 auto;
     display: flex;
     justify-content: center;
+    background-color: rgba(226, 140, 227, 1);
 }
 #main{
     width: 80%;
 }
 #heading{
     text-align: center;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     font-size: 3rem;
 }
 #contents{
+    display: grid;
     font-size: 5rem;
+    box-shadow: 1px 1px 5px #333;
+    background-size: 100% 100%;
     text-align: center;
-    height: 50vh;
-    background-image: url(images/bg1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-areas: ". time time ."
+                        " . focus focus ."
+                        ". todo todo ."
+                        " . qoute qoute ."
+}
+.container{
+    width: 100%;
+    height: auto;
+}
+#timeNow{
+    width: 100%;
+    grid-area: time;
+}
+#myFocus{
+    grid-area: focus;
+}
+#myFocus p{
+    font-size: 1.4rem;
+    max-width: 500px;
+}
+
+#qouteSection{
+    width: 100%;
+    font-size: 2rem;
+    max-width: 500px;
+    grid-area: qoute;
+}
+
+#toDoList{
+    font-size: 1.4rem;
+    grid-area: todo;
+}
+
+@media (min-width: 1200px){
+    #contents{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        justify-items: center;
+        grid-template-areas: ". time time ."
+                            "focus focus qoute qoute"
+                            ". todo todo .";
+
+    }
+    #myFocus p{
+        font-size: 2rem;
+    }
+    #toDoList ul{
+        list-style-type: none;
+    }
 }
