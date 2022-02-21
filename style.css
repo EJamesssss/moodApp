@@ -71,3 +71,20 @@ body{
         list-style-type: none;
     }
 }
+
+
+/* formhtml section */
+
+#form-header{
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+}
+
+#myForms{
+    width: 80%;
+}
+
+label{
+    color: white;
+}
