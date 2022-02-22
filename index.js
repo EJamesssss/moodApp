@@ -46,3 +46,33 @@ function AssignFocus() {
     var enterFocus = prompt("Enter your focus:")
     document.getElementById("writeFocus").innerHTML = enterFocus
 }
+
+const btnFocus = document.getElementById("giveFocus")
+btnFocus.addEventListener("click",AssignFocus)
+
+// JS FOR DISPLAY QOUTES
+
+var qouteList = ['If I had nine hours to chop down a tree, I’d spend the first six sharpening my axe.','Intelligence is the ability to adapt to change.','The only way to achieve the impossible is to believe it is possible.','No one is perfect - that’s why pencils have erasers.']
+
+var prevIndex
+
+function randomQoute(){
+    for (var i = Math.floor(Math.random()* qouteList.length); i != prevIndex;){
+        prevIndex = i
+    }
+    document.getElementById('selectedQoute').innerHTML = qouteList[prevIndex]
+    console.log(prevIndex)
+}
+
+const btnChangeQoute = document.getElementById('changeQoute')
+btnChangeQoute.addEventListener("click",randomQoute)
+randomQoute()
+
+function addNewQoute(){
+    var personalQoute = prompt("Enter your qoute:")
+    qouteList.push(personalQoute)
+    console.log(qouteList)
+}
+
+var btnaddQoute = document.getElementById("addNewQoute")
+btnaddQoute.addEventListener("click",addNewQoute)
