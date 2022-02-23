@@ -1,11 +1,12 @@
 var currentTime = new Date()
 var hh = currentTime.getHours()
 var mm = currentTime.getMinutes()
+var ss = currentTime.getSeconds()
 if(mm < 10){
     mm = '0'+mm
 }
 
-var timeNow = hh+ ":" + mm
+var timeNow = `${hh}:${mm}`
 
 var displayTime = document.getElementById('currentTime')
 var greet = document.getElementById('greeting')
@@ -13,9 +14,11 @@ var uName = document.querySelector('#userName')
 // var greetUser = uName.textContent = 'Elton'
 displayTime.textContent = timeNow
 
+
 function getUserName(){
     var text
-    var visitorName = prompt("Please enter your name:")
+    // var visitorName = prompt("Please enter your name:")
+    var visitorName = 'Elton'
     if (visitorName == null || visitorName ==""){
         text = "Unknown"
     }else{
@@ -70,9 +73,31 @@ randomQoute()
 
 function addNewQoute(){
     var personalQoute = prompt("Enter your qoute:")
-    qouteList.push(personalQoute)
-    console.log(qouteList)
+    if(personalQoute == null || personalQoute == ""){
+
+    }else{
+        qouteList.push(personalQoute)
+        console.log(qouteList)
+    }
 }
 
 var btnaddQoute = document.getElementById("addNewQoute")
 btnaddQoute.addEventListener("click",addNewQoute)
+
+
+// JS for to do list
+
+function addToDo(){
+    var todoItem = prompt("Add something to do:")
+    if (todoItem == null || todoItem == ""){
+
+    }else{
+        var ul = document.getElementById('todoUL')
+        var li = document.createElement("li")
+        li.appendChild(document.createTextNode(todoItem))
+        ul.appendChild(li)
+    }
+}
+
+var btnToDO = document.getElementById('updateToDo')
+btnToDO.addEventListener("click",addToDo)
