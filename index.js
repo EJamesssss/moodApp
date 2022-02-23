@@ -17,8 +17,8 @@ displayTime.textContent = timeNow
 
 function getUserName(){
     var text
-    // var visitorName = prompt("Please enter your name:")
-    var visitorName = 'Elton'
+    var visitorName = prompt("Please enter your name:")
+    // var visitorName = 'Elton'
     if (visitorName == null || visitorName ==""){
         text = "Unknown"
     }else{
