@@ -115,7 +115,7 @@ var btnAddToDO = document.getElementById('btnAddTodo')
 btnAddToDO.addEventListener("click",addToDo)
 
 // JS for toggles
-
+//Focus
 function toggleFocus(){
     const tglFocus = document.getElementById('toggleFocus')
     if(tglFocus.style.display === 'flex'){
@@ -131,6 +131,7 @@ function toggleFocus(){
 const btnFocus = document.getElementById("giveFocus")
 btnFocus.addEventListener("click",toggleFocus)
 
+//Qoute
 function toggleQoute(){
     const tglQoute = document.getElementById('toggleQoute')
     if(tglQoute.style.display === 'flex'){
@@ -146,6 +147,10 @@ function toggleQoute(){
 const btnQoute = document.getElementById('addNewQoute')
 btnQoute.addEventListener("click",toggleQoute)
 
+
+
+
+//To Do
 function toggleTodo(){
     const tglTodo = document.getElementById('toggleToDo')
     if (tglTodo.style.display === 'flex'){
