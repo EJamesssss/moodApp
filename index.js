@@ -30,28 +30,37 @@ function getUserName(){
 function showTime(){
     if(hh < 12 && 0 < mm <= 59){
         greet.textContent = 'Good Morning, ' + getUserName()
-        document.getElementById('contents').style.backgroundImage = 'url("images/bg1.jpg")'
+        document.getElementById('contents').style.backgroundColor = 'rgba(255, 255, 255, .6)'
+        document.getElementsByTagName('body')[0].style.backgroundImage = 'url("images/bg1.jpg")'
     }else if(hh < 18 && 0 < mm <= 59){
         greet.textContent = 'Good Afternoon, ' + getUserName()
-        document.getElementById('contents').style.backgroundImage = 'url("images/afternoon.jpg")'
         document.getElementById('contents').style.color = 'black'
+        document.getElementById('contents').style.backgroundColor = 'rgba(255, 255, 255, .6)'
+        document.getElementsByTagName('body')[0].style.backgroundImage = 'url("images/afternoon.jpg")'
         
     }else if(hh >= 18 && 0 < mm <= 59){
         greet.textContent = 'Good Evening, ' + getUserName()
-        document.getElementById('contents').style.backgroundImage = 'url("images/night.jpg")'
-        document.getElementById('contents').style.color = 'white'
+        document.getElementById('contents').style.backgroundColor = 'rgba(255, 255, 255, .6)'
+        document.getElementsByTagName('body')[0].style.backgroundImage = 'url("images/night.jpg")'
+        greet.style.color = "white"
     }
 }
 
 showTime()
 
 function AssignFocus() {
-    var enterFocus = prompt("Enter your focus:")
-    document.getElementById("writeFocus").innerHTML = enterFocus
+    var enterFocus = document.getElementById('TBFocus').value
+    // document.getElementById("writeFocus").textContent = enterFocus
+    if(enterFocus == null || enterFocus == ""){
+        alert("Please enter your focus")
+    }else{
+        document.getElementById("writeFocus").textContent = enterFocus
+        toggleFocus()
+    }
 }
 
-const btnFocus = document.getElementById("giveFocus")
-btnFocus.addEventListener("click",AssignFocus)
+const btnShowFocus = document.getElementById("btnAddFocus")
+btnShowFocus.addEventListener("click",AssignFocus)
 
 // JS FOR DISPLAY QOUTES
 
@@ -72,32 +81,82 @@ btnChangeQoute.addEventListener("click",randomQoute)
 randomQoute()
 
 function addNewQoute(){
-    var personalQoute = prompt("Enter your qoute:")
+    var personalQoute = document.getElementById('TBqoute').value
     if(personalQoute == null || personalQoute == ""){
-
+        alert('Please enter a qoute')
     }else{
         qouteList.push(personalQoute)
         console.log(qouteList)
+        document.getElementById('selectedQoute').textContent = personalQoute
+        toggleQoute()
     }
 }
 
-var btnaddQoute = document.getElementById("addNewQoute")
+var btnaddQoute = document.getElementById("btnAddQoute")
 btnaddQoute.addEventListener("click",addNewQoute)
 
 
 // JS for to do list
 
 function addToDo(){
-    var todoItem = prompt("Add something to do:")
+    var todoItem = document.getElementById('TBtodo').value
     if (todoItem == null || todoItem == ""){
-
+        alert('Please enter somethin to do')
     }else{
         var ul = document.getElementById('todoUL')
         var li = document.createElement("li")
         li.appendChild(document.createTextNode(todoItem))
         ul.appendChild(li)
+        toggleTodo()
     }
 }
 
-var btnToDO = document.getElementById('updateToDo')
-btnToDO.addEventListener("click",addToDo)
+var btnAddToDO = document.getElementById('btnAddTodo')
+btnAddToDO.addEventListener("click",addToDo)
+
+// JS for toggles
+
+function toggleFocus(){
+    const tglFocus = document.getElementById('toggleFocus')
+    if(tglFocus.style.display === 'flex'){
+        tglFocus.style.display = 'none'
+        document.getElementById('giveFocus').textContent = 'Enter Focus'
+        document.getElementById('TBFocus').value = ""
+    }else{
+        tglFocus.style.display = 'flex'
+        document.getElementById('giveFocus').textContent = 'Cancel'
+    }
+}
+
+const btnFocus = document.getElementById("giveFocus")
+btnFocus.addEventListener("click",toggleFocus)
+
+function toggleQoute(){
+    const tglQoute = document.getElementById('toggleQoute')
+    if(tglQoute.style.display === 'flex'){
+        tglQoute.style.display = 'none'
+        document.getElementById('addNewQoute').textContent = 'Add new qoute'
+        document.getElementById('TBqoute').value = ""
+    }else{
+        tglQoute.style.display = 'flex'
+        document.getElementById('addNewQoute').textContent = 'Cancel'
+    }
+}
+
+const btnQoute = document.getElementById('addNewQoute')
+btnQoute.addEventListener("click",toggleQoute)
+
+function toggleTodo(){
+    const tglTodo = document.getElementById('toggleToDo')
+    if (tglTodo.style.display === 'flex'){
+        tglTodo.style.display = 'none'
+        document.getElementById('updateToDo').textContent = 'Add to do'
+        document.getElementById('TBtodo').value = ""
+    }else{
+        tglTodo.style.display = 'flex'
+        document.getElementById('updateToDo').textContent = 'Cancel'
+    }
+}
+
+const btnToDo = document.getElementById('updateToDo')
+btnToDo.addEventListener("click",toggleTodo)
